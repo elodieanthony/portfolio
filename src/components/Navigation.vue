@@ -4,7 +4,7 @@
     v-if="showSideMenu"
     @close="handleSideMenuClose"
   >
-    <NavLinks :menuItems="menuItems"></NavLinks>
+    <NavLinks :menuItems="menuItems" :isMobile="showSideMenu"></NavLinks>
   </SideMenu>
   <div class="main-navigation">
     <button class="main-navigation__button" @click="showSideMenu = true">
@@ -53,6 +53,15 @@ a {
 .main-navigation {
   &__nav {
     display: none;
+
+    @media (min-width: '1024px') {
+      display: block;
+    }
+  }
+  &__button {
+    @media (min-width: '1024px') {
+      display: none;
+    }
   }
 }
 </style>

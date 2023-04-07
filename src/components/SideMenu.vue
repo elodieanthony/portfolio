@@ -1,6 +1,9 @@
 <template>
   <aside class="side-menu">
-    <button @click="closeSideMenu">Close</button>
+    <header class="side-menu__header">
+      <a href="/">Elodie Anthony</a>
+      <button @click="closeSideMenu">Close</button>
+    </header>
     <slot></slot>
   </aside>
 </template>
@@ -10,10 +13,19 @@ export default {
   name: 'SideMenu',
   methods: {
     closeSideMenu() {
-      this.$emit('close', false);
-    },
-  },
+      this.$emit('close', false)
+    }
+  }
 };
 </script>
 
-<style></style>
+<style lang="scss">
+
+.side-menu {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+</style>
