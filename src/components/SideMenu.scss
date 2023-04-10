@@ -1,0 +1,25 @@
+.side-menu {
+  position: absolute;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  background-color: #464c46;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    font-weight: 300;
+
+    a {
+      color: #ffff;
+    }
+  }
+
+  &__button {
+    border: none;
+    background: none;
+    font-family: 'Inter', sans-serif;
+    color: #ffff;
+  }
+}
