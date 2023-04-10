@@ -1,15 +1,18 @@
 <template>
-  <SideMenu
-    :isShown="showSideMenu"
-    v-if="showSideMenu"
-    @close="handleSideMenuClose"
-  >
-    <NavLinks :menuItems="menuItems" :isMobile="showSideMenu"></NavLinks>
+  <SideMenu @close="handleSideMenuClose">
+    <NavLinks
+      @close="handleSideMenuClose"
+      :menuItems="menuItems"
+      :isMobile="isSideMenuOpen"
+    ></NavLinks>
   </SideMenu>
   <div class="main-navigation">
-    <button class="main-navigation__button" @click="showSideMenu = true">
-      Menu
-    </button>
+    <header class="main-navigation__header">
+      <div class="main-navigation__logo"><a href="/">Elodie Anthony</a></div>
+      <button class="main-navigation__button" @click="handleSideMenuOpen">
+        Menu
+      </button>
+    </header>
     <nav class="main-navigation__nav">
       <NavLinks :menuItems="menuItems"></NavLinks>
     </nav>
@@ -17,6 +20,8 @@
 </template>
 
 <script>
+import { gsap, Expo } from 'gsap';
+
 import NavLinks from './NavLinks.vue';
 import SideMenu from './SideMenu.vue';
 
@@ -34,34 +39,61 @@ export default {
   },
   data() {
     return {
-      showSideMenu: false,
+      isSideMenuOpen: false,
+      isAnimationPlaying: false,
     };
   },
+  watch: {
+    isSideMenuOpen(value) {
+      const timeline = gsap.timeline({ paused: true });
+      const activeLinkUnderline = document.querySelector(
+        '.nav-links--active a span'
+      );
+      if (value) {
+        timeline.to('.side-menu', {
+          duration: 1,
+          right: 0,
+          ease: Expo.easeInOut,
+          delay: 0.2,
+        });
+        timeline.fromTo(
+          '.nav-links ul li',
+          { x: 100, opacity: 0 },
+          { x: 0, opacity: 1, stagger: 0.05, duration: 0.4 }
+        );
+        timeline.fromTo(
+          activeLinkUnderline,
+          { scaleX: 0 },
+          { scaleX: 1, stagger: 0.1, duration: 0.3 }
+        );
+      } else {
+        timeline.fromTo(
+          '.nav-links ul li',
+          { x: 0, opacity: 1 },
+          { x: 100, opacity: 0, stagger: 0, duration: 0.2 }
+        );
+        timeline.to('.side-menu', {
+          duration: 1,
+          right: '-100%',
+          ease: Expo.easeInOut,
+          //   delay: 0.2,
+        });
+      }
+      timeline.play();
+    },
+  },
   methods: {
-    handleSideMenuClose(b) {
-      this.showSideMenu = b;
+    handleSideMenuOpen() {
+      this.isSideMenuOpen = true;
+    },
+
+    handleSideMenuClose(val) {
+      this.isSideMenuOpen = val;
     },
   },
 };
 </script>
 
-<style lang="scss">
-a {
-  color: black;
-  text-decoration: none;
-}
-.main-navigation {
-  &__nav {
-    display: none;
-
-    @media (min-width: '1024px') {
-      display: block;
-    }
-  }
-  &__button {
-    @media (min-width: '1024px') {
-      display: none;
-    }
-  }
-}
+<style lang="scss" scoped>
+@import 'Navigation.scss';
 </style>

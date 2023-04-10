@@ -1,7 +1,6 @@
 <template>
   <div class="home-page">
-    <h1>Elodie Anthony</h1>
-    <h2>Frontend DEV.</h2>
+    <h1>Frontend DEV.</h1>
   </div>
 </template>
 
