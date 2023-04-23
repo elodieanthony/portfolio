@@ -38,6 +38,10 @@ html {
   margin: 1rem;
 }
 
+h2{
+  font-size: 2rem;
+}
+
 ul {
   padding: 0;
   list-style: none;
