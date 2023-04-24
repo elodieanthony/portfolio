@@ -1,13 +1,59 @@
 <template>
   <div class="project-detail">
-    <h1>Project Details</h1>
+    <video controls autoplay>
+      <source :src="project.video" type="video/mp4" />
+    </video>
+    <h1>{{ project.title }}</h1>
+    <p>{{ project.description }}</p>
+    <h2>Project Info</h2>
+    <BasicTable :tableItems="tableItems"></BasicTable>
   </div>
 </template>
 
 <script>
+import BasicTable from '../components/BasicTable.vue';
+
 export default {
   name: 'ProjectDetails',
+  components: {
+    BasicTable,
+  },
+  computed: {
+    projectId() {
+      return Number(this.$route.params.id);
+    },
+
+    project() {
+      return this.$store.state.projects.find(
+        project => project.id === this.projectId
+      );
+    },
+    tableItems() {
+      return [
+        {
+          key: 'role',
+          title: 'Role',
+          content: this.project.role,
+        },
+        {
+          key: 'year',
+          title: 'Year',
+          content: this.project.date,
+        },
+        {
+          key: 'stack',
+          title: 'Stack',
+          content: this.project.stack.join(', '),
+        },
+      ];
+    },
+  },
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+video {
+  margin-top: 1rem;
+  width: 100%;
+}
+</style>
