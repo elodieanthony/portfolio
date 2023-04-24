@@ -51,7 +51,7 @@
           vero in. Hic similique tempore, quaerat quo odio nesciunt repudiandae
           numquam aperiam aspernatur.
         </p>
-        <div class="home-about__more">
+        <div class="home-page__more">
           <router-link to="/about"
             >MORE ABOUT ME
             <span></span>
@@ -59,9 +59,30 @@
         </div>
       </div>
     </section>
+    <section class="home-project">
+      <div>
+        <div class="part-title">
+          <span>(2)</span>
+          <h2>MOST RECENT WORK</h2>
+        </div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+          voluptate quis sapiente voluptatum praesentium nostrum assumenda quas
+          vero in. Hic similique tempore, quaerat quo odio nesciunt repudiandae
+          numquam aperiam aspernatur.
+        </p>
+        <TableProject :tableItems="latestProjects"></TableProject>
+        <div class="home-page__more">
+          <router-link to="/projects"
+            >MORE ABOUT MY WORK
+            <span></span>
+          </router-link>
+        </div>
+      </div>
+    </section>
     <section class="home-contact">
       <div class="part-title">
-        <span>(2)</span>
+        <span>(3)</span>
         <h2>CONTACT ME</h2>
       </div>
       <p>
@@ -76,8 +97,19 @@
 </template>
 
 <script>
+import TableProject from '../components/TableProject.vue';
+
 export default {
   name: 'HomePage',
+  components: {
+    TableProject,
+  },
+  computed: {
+    latestProjects() {
+      const projects = [...this.$store.state.projects];
+      return projects.sort((a, b) => (a.date > b.date ? -1 : 1)).slice(0, 2);
+    },
+  },
 };
 </script>
 
@@ -108,10 +140,25 @@ section:not(:last-child) {
 
   &__arrow {
     text-align: center;
-    margin-top: 7rem;
+    // margin-top: 7rem;
     span {
       font-size: 3rem;
       font-weight: 400;
+    }
+  }
+  &__more {
+    text-align: center;
+    margin: 2rem 0;
+    a {
+      position: relative;
+    }
+    a span {
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 1px;
+      background: #000;
     }
   }
 }
@@ -137,21 +184,6 @@ section:not(:last-child) {
     margin: 2rem 0;
     img {
       width: 100%;
-    }
-  }
-  &__more {
-    text-align: center;
-    margin: 1rem 0;
-    a {
-      position: relative;
-    }
-    a span {
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-      width: 100%;
-      height: 1px;
-      background: #000;
     }
   }
 }
