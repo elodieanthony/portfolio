@@ -1,25 +1,27 @@
 <template>
   <section class="about">
-    <div class="about-intro">
-      <div class="home-about__picture">
-        <img src="../assets/about.jpg" alt="about" />
+    <div class="content">
+      <div class="about-intro">
+        <div class="about__picture picture-container">
+          <img src="../assets/about.jpg" alt="about" />
+        </div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+          voluptate quis sapiente voluptatum praesentium nostrum assumenda quas
+          vero in. Hic similique tempore, quaerat quo odio nesciunt repudiandae
+          numquam aperiam aspernatur.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+          voluptate quis sapiente voluptatum praesentium nostrum assumenda quas
+          vero in. Hic similique tempore, quaerat quo odio nesciunt repudiandae
+          numquam aperiam aspernatur.
+        </p>
       </div>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-        voluptate quis sapiente voluptatum praesentium nostrum assumenda quas
-        vero in. Hic similique tempore, quaerat quo odio nesciunt repudiandae
-        numquam aperiam aspernatur.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-        voluptate quis sapiente voluptatum praesentium nostrum assumenda quas
-        vero in. Hic similique tempore, quaerat quo odio nesciunt repudiandae
-        numquam aperiam aspernatur.
-      </p>
-    </div>
-    <div class="about__work">
-      <h2>HOW DO I WORK</h2>
-      <TableElement :tableItems="table_items"></TableElement>
+      <div class="about__work">
+        <h2>HOW DO I WORK</h2>
+        <TableElement :tableItems="table_items"></TableElement>
+      </div>
     </div>
   </section>
 </template>

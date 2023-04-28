@@ -6,7 +6,12 @@
   background-color: #464c46;
   overflow-y: auto;
   z-index: 2;
-  
+
+  @media (min-width: 768px) {
+    width: 70%;
+    box-shadow: -4px 0 9px rgb(70, 68, 68);
+  }
+
   &__header {
     display: flex;
     justify-content: space-between;
@@ -25,3 +30,4 @@
     color: #ffff;
   }
 }
+

@@ -1,13 +1,15 @@
 <template>
   <section class="projects-page">
     <h2>SOME OF MY WORK</h2>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate
-      quis sapiente voluptatum praesentium nostrum assumenda quas vero in. Hic
-      similique tempore, quaerat quo odio nesciunt repudiandae numquam aperiam
-      aspernatur.
-    </p>
-    <TableProject :tableItems="this.$store.state.projects"></TableProject>
+    <div class="content">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+        voluptate quis sapiente voluptatum praesentium nostrum assumenda quas
+        vero in. Hic similique tempore, quaerat quo odio nesciunt repudiandae
+        numquam aperiam aspernatur.
+      </p>
+      <TableProject :tableItems="this.$store.state.projects"></TableProject>
+    </div>
   </section>
 </template>
 

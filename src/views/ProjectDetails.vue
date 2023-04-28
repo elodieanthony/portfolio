@@ -3,10 +3,12 @@
     <video controls autoplay>
       <source :src="project.video" type="video/mp4" />
     </video>
-    <h1>{{ project.title }}</h1>
-    <p>{{ project.description }}</p>
-    <h2>Project Info</h2>
-    <BasicTable :tableItems="tableItems"></BasicTable>
+    <h1>{{ project.title.toUpperCase() }}</h1>
+    <div class="content">
+      <p>{{ project.description }}</p>
+      <h2>PROJECT INFO</h2>
+      <BasicTable :tableItems="tableItems"></BasicTable>
+    </div>
   </div>
 </template>
 
@@ -55,5 +57,11 @@ export default {
 video {
   margin-top: 1rem;
   width: 100%;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-top: 3rem;
 }
 </style>

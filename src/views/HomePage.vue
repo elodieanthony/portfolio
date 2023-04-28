@@ -30,32 +30,34 @@
           <span>(1)</span>
           <h2>HOW CAN I HELP</h2>
         </div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-          voluptate quis sapiente voluptatum praesentium nostrum assumenda quas
-          vero in. Hic similique tempore, quaerat quo odio nesciunt repudiandae
-          numquam aperiam aspernatur.
-        </p>
-        <div class="home-about__picture">
-          <img src="../assets/about.jpg" alt="about" />
-        </div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-          voluptate quis sapiente voluptatum praesentium nostrum assumenda quas
-          vero in. Hic similique tempore, quaerat quo odio nesciunt repudiandae
-          numquam aperiam aspernatur.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-          voluptate quis sapiente voluptatum praesentium nostrum assumenda quas
-          vero in. Hic similique tempore, quaerat quo odio nesciunt repudiandae
-          numquam aperiam aspernatur.
-        </p>
-        <div class="home-page__more">
-          <router-link to="/about"
-            >MORE ABOUT ME
-            <span></span>
-          </router-link>
+        <div class="content">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+            voluptate quis sapiente voluptatum praesentium nostrum assumenda
+            quas vero in. Hic similique tempore, quaerat quo odio nesciunt
+            repudiandae numquam aperiam aspernatur.
+          </p>
+          <div class="home-about__picture picture-container">
+            <img src="../assets/about.jpg" alt="about" />
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+            voluptate quis sapiente voluptatum praesentium nostrum assumenda
+            quas vero in. Hic similique tempore, quaerat quo odio nesciunt
+            repudiandae numquam aperiam aspernatur.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+            voluptate quis sapiente voluptatum praesentium nostrum assumenda
+            quas vero in. Hic similique tempore, quaerat quo odio nesciunt
+            repudiandae numquam aperiam aspernatur.
+          </p>
+          <div class="home-page__more">
+            <router-link to="/about"
+              >MORE ABOUT ME
+              <span></span>
+            </router-link>
+          </div>
         </div>
       </div>
     </section>
@@ -65,13 +67,16 @@
           <span>(2)</span>
           <h2>MOST RECENT WORK</h2>
         </div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-          voluptate quis sapiente voluptatum praesentium nostrum assumenda quas
-          vero in. Hic similique tempore, quaerat quo odio nesciunt repudiandae
-          numquam aperiam aspernatur.
-        </p>
-        <TableProject :tableItems="latestProjects"></TableProject>
+        <div class="content">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+            voluptate quis sapiente voluptatum praesentium nostrum assumenda
+            quas vero in. Hic similique tempore, quaerat quo odio nesciunt
+            repudiandae numquam aperiam aspernatur.
+          </p>
+          <TableProject :tableItems="latestProjects"></TableProject>
+        </div>
+
         <div class="home-page__more">
           <router-link to="/projects"
             >MORE ABOUT MY WORK
@@ -85,12 +90,14 @@
         <span>(3)</span>
         <h2>CONTACT ME</h2>
       </div>
-      <p>
-        Let’s talk about a project, collaboration or an idea you may have. Don’t
-        hesitate to send me a message at
-      </p>
-      <div class="email">
-        <a href="mailto:hello@elodieanthony.com">hello@elodieanthony.com</a>
+      <div class="content">
+        <p>
+          Let’s talk about a project, collaboration or an idea you may have.
+          Don’t hesitate to send me a message at
+        </p>
+        <div class="email">
+          <a href="mailto:hello@elodieanthony.com">hello@elodieanthony.com</a>
+        </div>
       </div>
     </section>
   </section>
@@ -113,7 +120,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 section:not(:last-child) {
   margin-bottom: 6rem;
 }
@@ -128,6 +135,9 @@ section:not(:last-child) {
   h2 {
     margin: 0;
   }
+  @media (min-width: 768px) {
+   margin-bottom: 2rem;
+  }
 }
 
 .home-page {
@@ -136,11 +146,25 @@ section:not(:last-child) {
   h1 {
     margin-bottom: 1rem;
     font-size: 3.5rem;
+
+    @media (min-width: 768px) {
+      width: 50%;
+    }
   }
 
   &__arrow {
     text-align: center;
-    // margin-top: 7rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    @media (min-width: 768px) {
+      left: inherit;
+      right: 2rem;
+    }
+
     span {
       font-size: 3rem;
       font-weight: 400;
@@ -168,23 +192,29 @@ section:not(:last-child) {
 
   &__sub {
     font-size: 0.8rem;
+
+    @media (min-width: 768px) {
+      width: 50%;
+    }
   }
   &__intro {
     margin-top: 3rem;
     font-weight: 300;
+    @media (min-width: 768px) {
+      display: flex;
+      justify-content: center;
+      margin-top: 5rem;
+
+      p {
+        width: 75%;
+      }
+    }
   }
 }
 
 .home-about {
   &__txt {
     padding-top: 10rem;
-  }
-
-  &__picture {
-    margin: 2rem 0;
-    img {
-      width: 100%;
-    }
   }
 }
 .home-contact {
@@ -193,4 +223,5 @@ section:not(:last-child) {
     font-size: 2rem;
   }
 }
+
 </style>

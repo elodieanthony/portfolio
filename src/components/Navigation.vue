@@ -6,6 +6,13 @@
       :isMobile="isSideMenuOpen"
     ></NavLinks>
   </SideMenu>
+  <transition name="overlay" appear>
+    <div
+      class="overlay"
+      v-if="isSideMenuOpen"
+      @click="handleSideMenuClose"
+    ></div>
+  </transition>
   <div class="main-navigation">
     <header class="main-navigation__header">
       <div class="main-navigation__logo"><a href="/">Elodie Anthony</a></div>
@@ -40,6 +47,7 @@ export default {
   data() {
     return {
       isSideMenuOpen: false,
+      timeline: null,
       isAnimationPlaying: false,
     };
   },
@@ -49,6 +57,7 @@ export default {
       const activeLinkUnderline = document.querySelector(
         '.nav-links--active a span'
       );
+      const overlay = document.querySelector('.overlay');
       if (value) {
         timeline.to('.side-menu', {
           duration: 1,
@@ -66,6 +75,7 @@ export default {
           { scaleX: 0 },
           { scaleX: 1, stagger: 0.1, duration: 0.3 }
         );
+        timeline.to(overlay, { opacity: 1, duration: 0.3 }, 0);
       } else {
         timeline.fromTo(
           '.nav-links ul li',
@@ -76,8 +86,8 @@ export default {
           duration: 1,
           right: '-100%',
           ease: Expo.easeInOut,
-          //   delay: 0.2,
         });
+        timeline.to(overlay, { opacity: 0, duration: 0.3 }, 0);
       }
       timeline.play();
     },
@@ -85,10 +95,13 @@ export default {
   methods: {
     handleSideMenuOpen() {
       this.isSideMenuOpen = true;
+      // console.log(document.querySelector('.overlay'))
+      // document.querySelector('.overlay').classList.add('overlay--show');
     },
 
-    handleSideMenuClose(val) {
-      this.isSideMenuOpen = val;
+    handleSideMenuClose() {
+      this.isSideMenuOpen = false;
+      // document.querySelector('.overlay').classList.remove('overlay--show');
     },
   },
 };

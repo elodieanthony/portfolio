@@ -1,7 +1,6 @@
 .main-navigation {
   position: sticky;
   top: 1rem;
-  // z-index: -1;
   &__nav {
     display: none;
 
@@ -31,4 +30,24 @@
     justify-content: space-between;
     align-items: center;
   }
+}
+
+.overlay-enter-active,
+.overlay-leave-active {
+  opacity: 1;
+  transition: opacity 1s;
+  transition-delay: .5s;
+}
+.overlay-enter-from,
+.overlay-leave-to {
+  opacity: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
 }

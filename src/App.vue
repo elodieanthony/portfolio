@@ -38,7 +38,7 @@ html {
   margin: 1rem;
 }
 
-h2{
+h2 {
   font-size: 2rem;
 }
 
@@ -49,5 +49,29 @@ ul {
 a {
   color: black;
   text-decoration: none;
+}
+@media (min-width: 768px) {
+  .content {
+    margin: 0 12%;
+  }
+}
+
+.picture-container {
+  margin: 2rem 0;
+  img {
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+
+    img {
+      object-fit: cover;
+    }
+  }
 }
 </style>
