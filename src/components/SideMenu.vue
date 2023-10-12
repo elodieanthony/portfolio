@@ -2,7 +2,7 @@
   <aside class="side-menu">
     <header class="side-menu__header">
       <router-link to="/">Elodie Anthony</router-link>
-      <button class="side-menu__button" @click="closeSideMenu">CLOSE</button>
+      <button class="side-menu__button" @click="closeSideMenu">FERMER</button>
     </header>
     <slot></slot>
   </aside>

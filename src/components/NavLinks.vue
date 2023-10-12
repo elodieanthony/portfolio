@@ -1,9 +1,13 @@
 <template>
   <div class="nav-links">
     <ul>
-      <li class="nav-links__li" :class="{ 'nav-links--active': isActive('/') }">
+      <li
+        v-show="isMobile"
+        class="nav-links__li"
+        :class="{ 'nav-links--active': isActive('/') }"
+      >
         <router-link to="/" @click="closeSideMenu"
-          >HOME <span v-if="isActive('/')"></span
+          >ACCUEIL <span v-if="isActive('/')"></span
         ></router-link>
       </li>
       <li
@@ -13,9 +17,9 @@
         :class="{ 'nav-links--active': isActive(item.link) }"
       >
         <router-link :to="item.link" @click="closeSideMenu"
-          >{{ item.name }}<span v-if="isActive(item.link)"></span
+          >{{ item.name }}<span></span
         ></router-link>
-        <span></span>
+        <!-- <span></span> -->
         <span
           class="nav-links__span"
           v-if="index !== menuItems.length - 1 && !isMobile"

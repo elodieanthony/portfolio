@@ -13,8 +13,10 @@
     padding: 0;
     border: none;
     background: none;
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
+    font-family: 'Questrial', sans-serif;
+    // font-weight: 500;
+    font-size: 1rem;
+    color: #000;
 
     @media (min-width: '1024px') {
       display: none;
@@ -22,7 +24,11 @@
   }
 
   &__logo {
-    font-weight: 300;
+    color: black;
+    // font-weight: 500;
+    @media (min-width: '2560px') {
+      // font-size: 2rem;
+    }
   }
 
   &__header {
@@ -36,7 +42,7 @@
 .overlay-leave-active {
   opacity: 1;
   transition: opacity 1s;
-  transition-delay: .5s;
+  transition-delay: 0.5s;
 }
 .overlay-enter-from,
 .overlay-leave-to {

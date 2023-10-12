@@ -19,10 +19,10 @@
       <button class="main-navigation__button" @click="handleSideMenuOpen">
         Menu
       </button>
+      <nav class="main-navigation__nav">
+        <NavLinks :menuItems="menuItems"></NavLinks>
+      </nav>
     </header>
-    <nav class="main-navigation__nav">
-      <NavLinks :menuItems="menuItems"></NavLinks>
-    </nav>
   </div>
 </template>
 
@@ -95,13 +95,10 @@ export default {
   methods: {
     handleSideMenuOpen() {
       this.isSideMenuOpen = true;
-      // console.log(document.querySelector('.overlay'))
-      // document.querySelector('.overlay').classList.add('overlay--show');
     },
 
     handleSideMenuClose() {
       this.isSideMenuOpen = false;
-      // document.querySelector('.overlay').classList.remove('overlay--show');
     },
   },
 };

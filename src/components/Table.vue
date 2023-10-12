@@ -2,12 +2,13 @@
   <ul class="table">
     <li
       class="table__line"
+      @click="toggleLine(item)"
       v-for="item in tableItems"
       :key="item.key"
       :class="{ expanded: item.expanded, collapsed: !item.expanded }"
       ref="itemElements"
     >
-      <div class="table__title" @click="toggleLine(item)">
+      <div class="table__title">
         <div class="table__text-title">
           {{ item.title }}
         </div>
@@ -19,6 +20,9 @@
           :style="{ maxHeight: item.expanded ? item.textHeight : '0' }"
         >
           {{ item.text }}
+          <ul class="table__items">
+            <li v-for="skill in item.skills" :key="skill.key">{{ skill }}</li>
+          </ul>
         </div>
       </div>
     </li>
@@ -36,6 +40,7 @@ export default {
   },
   methods: {
     toggleLine(item) {
+      console.log('in ti');
       item.expanded = !item.expanded;
       item.expanded ? this.setTextHeight(item) : (item.textHeight = '0px');
     },
@@ -47,9 +52,6 @@ export default {
         item.textHeight = textElement.scrollHeight + 'px';
       }
     },
-  },
-  mounted() {
-    // this.tableItems.map((item, index) => this.setTextHeight(item, index));
   },
   updated() {
     this.tableItems.map((item, index) =>
@@ -68,7 +70,10 @@ export default {
     padding: 1rem 0;
     border-bottom: 1px solid black;
     overflow: hidden;
-
+    cursor: pointer;
+    @media (min-width: 1024px) {
+      padding: 1.5rem 0;
+    }
     &.collapsed {
       transition: all 0.3s ease;
       max-height: 2rem;
@@ -88,7 +93,6 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    // border: 1px solid;
   }
 
   &__text-wrapper {
@@ -98,13 +102,17 @@ export default {
     margin-top: 0;
     transition: all 0.3s ease;
   }
+  &__text-title {
+    font-weight: 500;
+  }
 
   &__cross {
     position: relative;
     font-size: 1.5rem;
     cursor: pointer;
 
-    &::before, &::after {
+    &::before,
+    &::after {
       transition: transform 0.3s ease-out;
       content: '';
       position: absolute;
@@ -115,7 +123,7 @@ export default {
       background-color: black;
     }
     &::after {
-        transform: rotate(90deg);
+      transform: rotate(90deg);
     }
   }
 
@@ -124,5 +132,25 @@ export default {
       transform: rotate(0deg);
     }
   }
+
+  &__items {
+    margin-top: 1rem;
+
+    li {
+      font-weight: 500;
+      @media (min-width: 1024px) {
+        margin-right: 30px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0 1rem;
+      margin-top: 1rem;
+      list-style: square;
+    }
+  }
+
 }
 </style>

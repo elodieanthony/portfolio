@@ -11,15 +11,28 @@ import ProjectDetails from './views/ProjectDetails.vue';
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: '/', component: HomePage },
-    { path: '/projects', component: ProjectPage },
-    { path: '/about', component: AboutPage },
-    { path: '/contact', component: ContactPage },
+    { path: '/', component: HomePage, meta: { transition: 'fade' } },
     {
-      path: '/projects/:id',
+      path: '/about',
+      component: AboutPage,
+      meta: { transition: 'slide-left' },
+    },
+    {
+      path: '/projets',
+      component: ProjectPage,
+      meta: { transition: 'slide-left' },
+    },
+    {
+      path: '/contact',
+      component: ContactPage,
+      meta: { transition: 'slide-left' },
+    },
+    {
+      path: '/projets/:id',
       name: 'projectDetails',
       component: ProjectDetails,
       props: true,
+      meta: { transition: 'slide-right' },
     },
   ],
 });
@@ -30,34 +43,45 @@ const store = createStore({
       projects: [
         {
           id: 1,
-          title: 'Project 1',
+          title: 'Comparateur Télécom',
           description:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit.Ducimus voluptate quis sapiente voluptatum praesentium nostrum assumenda quas vero in.',
-          date: '/2020',
-          role: 'Web Déveloper',
-          stack: ['Html', 'Css', 'JS'],
-          video: require('@/assets/test.mp4'),
-        },
-        {
-          id: 2,
-          title: 'Project 2',
-          description: 'Description du projet 2',
+            "Intégration d'une application web de comparaison entre les différentes offres mobile et internet.",
           date: '/2018',
-          role: 'Web Déveloper',
-          stack: ['Html', 'Css', 'JS'],
-          video: require('@/assets/test.mp4'),
+          role: 'Développeuse Frontend',
+          stack: ['Html', 'Scss', 'Javascript(es6)'],
+          video: require('@/assets/selectra.mp4'),
+          image: require('@/assets/comparator.png'),
         },
         {
           id: 2,
-          title: 'Project 3',
-          description: 'Description du projet 3',
-          date: '/2022',
-          role: 'Web Déveloper',
-          stack: ['Html', 'Css', 'JS'],
-          video: require('@/assets/test.mp4'),
+          title: 'Portfolio Sébastien Veyre',
+          description: "Intégration du portfolio d'un designer Lyonnais. ",
+          date: '/2017',
+          role: 'Web integration',
+          stack: ['Html', 'Css', 'Jquery'],
+          video: require('@/assets/sebV.mp4'),
+          image: require('@/assets/seb.png'),
+        },
+        {
+          id: 3,
+          title: 'Heart@Hack',
+          description:
+            "Intégration d'une landing page pour le lancement du jeu mobile Heart@Hack.",
+          date: '/2017',
+          role: 'Web integration/Web Design',
+          stack: ['Html', 'Css', 'Jquery'],
+          video: require('@/assets/hah.mp4'),
+          image: require('@/assets/hah.png'),
         },
       ],
     };
+  },
+  beforeRouteUpdate(to, from, next) {
+    console.log('into');
+    const toDepth = to.path.split('/').length;
+    const fromDepth = from.path.split('/').length;
+    this.transitionName = toDepth < fromDepth ? 'slide-left' : 'slide-right';
+    next();
   },
   getters: {
     getProjectById: state => id => {

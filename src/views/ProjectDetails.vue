@@ -1,24 +1,28 @@
 <template>
-  <div class="project-detail">
-    <video controls autoplay>
-      <source :src="project.video" type="video/mp4" />
-    </video>
-    <h1>{{ project.title.toUpperCase() }}</h1>
+  <section class="project-detail">
+    <div class="project-detail__header">
+      <video controls autoplay>
+        <source :src="project.video" type="video/mp4" />
+      </video>
+      <h1>{{ project.title.toUpperCase() }}</h1>
+    </div>
     <div class="content">
       <p>{{ project.description }}</p>
-      <h2>PROJECT INFO</h2>
+      <h2>INFO SUR LE PROJET</h2>
       <BasicTable :tableItems="tableItems"></BasicTable>
     </div>
-  </div>
+  </section>
+  <Footer />
 </template>
 
 <script>
+import Footer from '@/components/Footer.vue';
 import BasicTable from '../components/BasicTable.vue';
-
 export default {
   name: 'ProjectDetails',
   components: {
     BasicTable,
+    Footer,
   },
   computed: {
     projectId() {
@@ -39,7 +43,7 @@ export default {
         },
         {
           key: 'year',
-          title: 'Year',
+          title: 'Année',
           content: this.project.date,
         },
         {
@@ -54,9 +58,37 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.project-detail {
+  // position: relative;
+  // height: calc(100vh - 2rem);
+
+  @media (min-width: 1024px) {
+    .content {
+      margin: 0 25%;
+      margin-bottom: 3rem;
+    }
+  }
+  @media (min-width: 1440px) {
+    display: flex;
+    flex-direction: row-reverse;
+    // height: 100vh;
+    margin-top: 5rem;
+    align-items: center;
+    &__header {
+      width: 100%;
+    }
+    .content {
+      margin: 0 2rem 0 0;
+      width: 70%;
+    }
+  }
+}
 video {
   margin-top: 1rem;
   width: 100%;
+  @media (min-width: 1440px) {
+    margin-top: 0;
+  }
 }
 
 h2 {
