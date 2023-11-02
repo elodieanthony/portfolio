@@ -15,7 +15,9 @@
   </transition>
   <div class="main-navigation">
     <header class="main-navigation__header">
-      <div class="main-navigation__logo"><a href="/">Elodie Anthony</a></div>
+      <div class="main-navigation__logo">
+        <router-link to="/">Elodie Anthony</router-link>
+      </div>
       <button class="main-navigation__button" @click="handleSideMenuOpen">
         Menu
       </button>

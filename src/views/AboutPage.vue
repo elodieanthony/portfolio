@@ -1,30 +1,33 @@
 <template>
-  <section class="about">
-    <div class="content">
-      <div class="about__intro">
-        <div class="about__picture picture-container">
-          <img src="../assets/about.jpg" alt="about" />
+  <div class="container">
+    <section class="about">
+      <div class="content">
+        <div class="about__intro">
+          <div class="about__picture picture-container">
+            <img src="../assets/about.jpg" alt="about" />
+          </div>
+          <div class="about__text">
+            <p>
+              Passionnée par les technologies du web depuis toujours, j'ai
+              décidé de me former au développement web en 2016, après avoir
+              acquis de l'expérience dans la recherche utilisateur au sein du
+              studio de jeu vidéo Ubisoft Paris. Par la suite, j'ai travaillé
+              dans une agence web spécialisée dans la création de bannières
+              publicitaires, puis en tant qu'intégratrice freelance sur divers
+              projets. Plus récemment, j'ai rejoint l'équipe de l'entreprise
+              Selectra en tant que développeuse Frontend, où j'ai contribué
+              pendant plusieurs années.
+            </p>
+          </div>
         </div>
-        <div class="about__text">
-          <p>
-            Passionnée depuis toujours par les technologies du web, j'ai décidée
-            de me former au dévelopement web en 2016 suite à une première
-            expérience dans la recherche utilisateur au sein du studio de jeu
-            vidéo Ubisoft Paris. Par la suite, j'ai travaillé dans une agence
-            web spécialisée dans les bannières publicitaires, puis en temps que
-            freelance sur divers projets avant de d'intégrer l'entreprise
-            Selectra en temps de développeuse Frontend, où j'ai travaillé
-            pendant plusieurs années.
-          </p>
+        <div class="about__work">
+          <h2>MES COMPÉTENCES</h2>
+          <TableElement :tableItems="table_items"></TableElement>
         </div>
       </div>
-      <div class="about__work">
-        <h2>MES COMPÉTENCES</h2>
-        <TableElement :tableItems="table_items"></TableElement>
-      </div>
-    </div>
-    <Footer footerClass="footer--abs-lg" />
-  </section>
+    </section>
+    <Footer />
+  </div>
 </template>
 
 <script>
@@ -74,7 +77,6 @@ export default {
 
 <style lang="scss" scoped>
 .about {
-  // position: relative;
   &__intro {
     @media (min-width: '1024px') {
       display: flex;
@@ -89,7 +91,6 @@ export default {
   }
   &__text {
     @media (min-width: '1024px') {
-      // flex: 0 0 45%;
       align-self: flex-end;
       margin-left: 3rem;
       p {
@@ -106,7 +107,7 @@ export default {
       h2 {
         flex: 0 0 40%;
         margin: 0;
-        text-align: center;
+        // text-align: center;
       }
       ul {
         flex: 0 0 55%;

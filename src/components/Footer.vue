@@ -21,27 +21,30 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  &--abs {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-  }
-
-  &--abs-lg {
-    @media (min-width: 1024px) {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-    }
-  }
-  // @media (min-width: 1024px) {
+  flex-shrink: 0;
+  width: 100%;
+  // &--abs {
   //   position: absolute;
   //   bottom: 0;
   //   left: 0;
+  //   padding: 0 1rem;
   //   width: 100%;
   // }
+
+  // &--abs-lg {
+  //   @media (min-width: 1024px) {
+  //     position: absolute;
+  //     bottom: 0;
+  //     left: 0;
+  //     padding: 0 3rem;
+  //     width: 100%;
+  //   }
+  // }
+  // // @media (min-width: 1024px) {
+  // //   position: absolute;
+  // //   bottom: 0;
+  // //   left: 0;
+  // //   width: 100%;
+  // // }
 }
 </style>

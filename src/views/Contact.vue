@@ -1,29 +1,38 @@
 <template>
-  <section class="contact-page">
-    <div class="content">
-      <h2>HELLO</h2>
-      <p>
-        Vous voulez collaborer sur un projet? N'hesitez pas à me contacter afin
-        d'en discuter :
-      </p>
-      <div class="email">
-        <a href="anthonyelodie@gmail.com" class="hoverable" @click="copyLink">
-          <span>anthonyelodie</span>@gmail <span>.com</span>
-        </a>
+  <div class="container">
+    <section class="contact-page">
+      <div class="content">
+        <h2>HELLO</h2>
+        <p>
+          Si vous souhaitez collaborer sur un projet ou simplement discuter,
+          n'hésitez pas à me contacter. Je serai ravie d'échanger avec vous.
+        </p>
+        <p>Vous pouvez m'envoyer un message à l'adresse suivante :</p>
+        <div class="email">
+          <a
+            href="anthonyelodie@gmail.com"
+            class="hoverable"
+            @click="handleClick"
+            ref="email"
+          >
+            <span>anthonyelodie</span>@gmail <span>.com</span>
+          </a>
+        </div>
       </div>
-    </div>
-    <Footer footerClass="footer--abs" />
-    <CursorLink
-      :cursorMessage="cursorMessage"
-      :isCopied="isCopied"
-      size="2"
-    ></CursorLink>
-  </section>
+      <CursorLink
+        :cursorMessage="cursorMessage"
+        :isCopied="isCopied"
+        size="2"
+      ></CursorLink>
+    </section>
+    <Footer />
+  </div>
 </template>
 
 <script>
 import CursorLink from '@/components/UIElements/cursorLink.vue';
 import Footer from '@/components/Footer.vue';
+import clipboardMixin from '@/mixins/clipboardMixin';
 
 export default {
   name: 'ContactPage',
@@ -31,35 +40,12 @@ export default {
     CursorLink,
     Footer,
   },
-  data() {
-    return {
-      cursorMessage: 'Copier',
-      isCopied: false,
-    };
-  },
-  methods: {
-    copyLink(e) {
-      e.preventDefault();
-      const link = e.currentTarget.getAttribute('href');
-      navigator.clipboard
-        .writeText(link)
-        .then(() => {
-          this.isCopied = true;
-          setTimeout(() => {
-            this.isCopied = false;
-          }, 2000);
-        })
-        .catch(error => {
-          console.error('Error copying link to clipboard:', error);
-        });
-    },
-  },
+  mixins: [clipboardMixin],
 };
 </script>
 
 <style lang="scss" scoped>
 .contact-page {
-  height: calc(100vh - 2rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -78,14 +64,17 @@ h2 {
     right: -27px;
     width: 15px;
     height: 15px;
-    border-radius: 50%;
+    // border-radius: 50%;
     background: #817f7d;
     animation: pulse 1.75s infinite;
     animation-delay: 0.5s;
 
+    @media (min-width: 768px) {
+      bottom: 23px;
+    }
     @media (min-width: 1024px) {
-    bottom: 25px;
-  }
+      bottom: 25px;
+    }
   }
   @media (min-width: 768px) {
     font-size: 5rem;
@@ -95,13 +84,18 @@ h2 {
     margin-bottom: 0;
   }
 }
+p {
+  margin: 0;
+}
 .email {
   margin-top: 2rem;
   word-wrap: break-word;
   text-align: center;
 
   a {
-    font-size: 3.5rem;
+    display: inline-block;
+    // font-size: 3.5rem;
+    font-size: 14vw;
     font-weight: 400;
     // cursor: none;
 
@@ -114,6 +108,17 @@ h2 {
   }
   span {
     display: block;
+  }
+}
+.content {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+
+  @media (min-width: 1024px) {
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
   }
 }
 </style>

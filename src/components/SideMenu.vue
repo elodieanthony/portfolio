@@ -1,7 +1,7 @@
 <template>
   <aside class="side-menu">
     <header class="side-menu__header">
-      <router-link to="/">Elodie Anthony</router-link>
+      <router-link @click="closeSideMenu" to="/">Elodie Anthony</router-link>
       <button class="side-menu__button" @click="closeSideMenu">FERMER</button>
     </header>
     <slot></slot>

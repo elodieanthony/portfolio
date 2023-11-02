@@ -1,18 +1,20 @@
 <template>
-  <section class="project-detail">
-    <div class="project-detail__header">
-      <video controls autoplay>
-        <source :src="project.video" type="video/mp4" />
-      </video>
-      <h1>{{ project.title.toUpperCase() }}</h1>
-    </div>
-    <div class="content">
-      <p>{{ project.description }}</p>
-      <h2>INFO SUR LE PROJET</h2>
-      <BasicTable :tableItems="tableItems"></BasicTable>
-    </div>
-  </section>
-  <Footer />
+  <div class="container">
+    <section class="project-detail">
+      <div class="project-detail__header">
+        <video controls autoplay>
+          <source :src="project.video" type="video/mp4" />
+        </video>
+        <h1>{{ project.title.toUpperCase() }}</h1>
+      </div>
+      <div class="content">
+        <p>{{ project.description }}</p>
+        <h2>INFO SUR LE PROJET</h2>
+        <BasicTable :tableItems="tableItems"></BasicTable>
+      </div>
+    </section>
+    <Footer />
+  </div>
 </template>
 
 <script>
@@ -59,9 +61,6 @@ export default {
 
 <style lang="scss" scoped>
 .project-detail {
-  // position: relative;
-  // height: calc(100vh - 2rem);
-
   @media (min-width: 1024px) {
     .content {
       margin: 0 25%;

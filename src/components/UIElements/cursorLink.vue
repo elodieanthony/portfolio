@@ -53,14 +53,16 @@ export default {
     };
 
     onMounted(() => {
-      ballEl.value = document.querySelector('.cursor');
-      hoverables.value = document.querySelectorAll('.hoverable');
-      document.addEventListener('mousemove', onMouseMove);
+      if (window.screen.width >= 1024) {
+        ballEl.value = document.querySelector('.cursor');
+        hoverables.value = document.querySelectorAll('.hoverable');
+        document.addEventListener('mousemove', onMouseMove);
 
-      hoverables.value.forEach(hoverable => {
-        hoverable.addEventListener('mouseenter', onMouseHover);
-        hoverable.addEventListener('mouseleave', onMouseHoverOut);
-      });
+        hoverables.value.forEach(hoverable => {
+          hoverable.addEventListener('mouseenter', onMouseHover);
+          hoverable.addEventListener('mouseleave', onMouseHoverOut);
+        });
+      }
     });
 
     return {

@@ -8,6 +8,7 @@ import ProjectPage from './views/Projects.vue';
 import ContactPage from './views/Contact.vue';
 import ProjectDetails from './views/ProjectDetails.vue';
 
+// const AboutPage = () => import('./views/AboutPage.vue');
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -31,10 +32,12 @@ const router = createRouter({
       path: '/projets/:id',
       name: 'projectDetails',
       component: ProjectDetails,
-      props: true,
       meta: { transition: 'slide-right' },
     },
   ],
+  scrollBehavior: () => {
+    return { x: 0, y: 0 };
+  },
 });
 
 const store = createStore({
@@ -74,6 +77,7 @@ const store = createStore({
           image: require('@/assets/hah.png'),
         },
       ],
+      isTouchDevice: false,
     };
   },
   beforeRouteUpdate(to, from, next) {

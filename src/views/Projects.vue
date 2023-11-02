@@ -1,17 +1,19 @@
 <template>
-  <section class="projects-page">
-    <h2>MES PROJETS</h2>
-    <div class="content">
-      <!-- <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-        voluptate quis sapiente voluptatum praesentium nostrum assumenda quas
-        vero in. Hic similique tempore, quaerat quo odio nesciunt repudiandae
-        numquam aperiam aspernatur.
-      </p> -->
-      <TableProject :tableItems="this.$store.state.projects"></TableProject>
-    </div>
-    <Footer footerClass="footer--abs" />
-  </section>
+  <div class="container">
+    <section class="projects-page">
+      <h2>MES PROJETS</h2>
+      <div class="content">
+        <!-- <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+          voluptate quis sapiente voluptatum praesentium nostrum assumenda quas
+          vero in. Hic similique tempore, quaerat quo odio nesciunt repudiandae
+          numquam aperiam aspernatur.
+        </p> -->
+        <TableProject :tableItems="this.$store.state.projects"></TableProject>
+      </div>
+    </section>
+    <Footer />
+  </div>
 </template>
 
 <script>
@@ -30,7 +32,6 @@ Table;
 </script>
 
 <style lang="scss" scoped>
-
 h2 {
   margin-bottom: 3rem;
 }
